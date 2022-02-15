@@ -1,4 +1,5 @@
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -116,7 +117,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void registerWith1CharacterPasswords() {
+    public void registerWith1CharacterPassword() {
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("#header-account .links li:nth-child(5) a")).click();
         driver.findElement(By.id("firstname")).sendKeys(RandomStringUtils.randomAlphanumeric(5));
@@ -155,6 +156,11 @@ public class RegisterTest {
 
         Assert.assertTrue(driver.findElements(By.cssSelector(".my-account .dashboard")).isEmpty());
         Assert.assertFalse(driver.findElements(By.cssSelector(".validation-advice")).isEmpty());
+    }
+
+    @After
+    public void closeBrowser() {
+        driver.quit();
     }
 
 }

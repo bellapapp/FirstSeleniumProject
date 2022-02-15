@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -72,5 +73,10 @@ public class DropDownTest {
         WebElement sorting = driver.findElement(By.cssSelector(".category-products > .toolbar .pager select"));
         Select dropdown = new Select(sorting);
         dropdown.selectByVisibleText("12");
+    }
+
+    @After
+    public void closeBrowser() {
+        driver.quit();
     }
 }

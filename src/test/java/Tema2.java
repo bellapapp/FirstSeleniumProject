@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -62,5 +63,10 @@ public class Tema2 {
         WebElement positionUp = driver.findElement(By.cssSelector(".category-products > .toolbar .sort-by select"));
         Select dropdown = new Select(positionUp);
         dropdown.selectByVisibleText("Price");
+    }
+
+    @After
+    public void closeBrowser() {
+        driver.quit();
     }
 }

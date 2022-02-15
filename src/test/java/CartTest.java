@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,9 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.List;
-import java.util.Locale;
+
 
 public class CartTest {
 
@@ -85,6 +85,7 @@ public class CartTest {
                 break;
             }
         }
+
         Assert.assertEquals((productTitle + " was added to your shopping cart.").toLowerCase(), cartSuccessMsg.toLowerCase());
         Assert.assertTrue(isProductTitleFoundInCart);
     }
@@ -127,5 +128,10 @@ public class CartTest {
         String errorMessage = errorMsg.getText();
 
         Assert.assertEquals(("The maximum quantity allowed for purchase is 10000."), errorMessage);
+    }
+
+    @After
+    public void closeBrowser() {
+        driver.quit();
     }
 }

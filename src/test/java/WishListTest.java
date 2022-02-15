@@ -276,6 +276,7 @@ public class WishListTest {
         driver.switchTo().alert().accept();
 
         Assert.assertTrue(driver.findElements(By.id("#wishlist-table")).isEmpty());
+
     }
 
     @After
